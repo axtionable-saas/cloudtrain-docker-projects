@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class ReactProject {
+public class ReactProjectTest {
 
     @Test
     public void openGoogle() throws InterruptedException {
