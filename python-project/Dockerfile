@@ -2,11 +2,14 @@
 FROM python:3.11-slim
 
 # Set environment variables
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
 
 # Set the working directory
 WORKDIR /app
+
+# Install OS dependencies
+RUN apt update && apt install nano -y
 
 # Copy requirements file to leverage Docker cache
 COPY requirements.txt .
