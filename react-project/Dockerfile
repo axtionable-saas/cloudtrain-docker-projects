@@ -33,10 +33,14 @@ RUN npm run build
 
 # Stage 2 - Serving the project to nginx / creation of react project image -> NGINX Container
 # Selection of base Image - nginx:latest
-FROM nginx:latest
+FROM alpine:latest
 
 # Copying project build assets to deployment folder in nginx
-COPY --from=build /app/dist /usr/share/nginx/html
+RUN apk update && apk add nginx
+
+COPY .//nginx-config//default.conf /etc/nginx/http.d
+
+COPY --from=build /app/dist /var/www/localhost/htdocs
 
 # Exposing the app port
 EXPOSE 80
